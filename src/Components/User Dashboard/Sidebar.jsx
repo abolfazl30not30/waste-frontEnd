@@ -7,7 +7,7 @@ function Sidebar() {
                 <div className="col-lg-3">
                     <ul className="dashboard-navigation">
                         <li>
-                            <h3>داشبورد</h3>
+                            <h3>پنل کاربری</h3>
                         </li>
                         <li>
                             <Link to="/dashboard/add-product" className="active">افزودن کالا</Link>
