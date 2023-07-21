@@ -3229,7 +3229,9 @@ Footer Area Style
   top: 0;
   right: 0;
 }
-
+.single-footer-widget .info-list li a{
+  color:black
+}
 .single-footer-widget .info-list li a:hover {
   color: #83b230;
 }
@@ -3259,7 +3261,12 @@ Footer Area Style
 .single-footer-widget .social-link li i {
   font-size: 18px;
 }
-
+.single-footer-widget .import-link li a{
+  color:black !important;
+}
+.single-footer-widget .import-link li a:hover{
+  color:#83b230!important;
+}
 .single-footer-widget .import-link li {
   margin-bottom: 10px;
 }

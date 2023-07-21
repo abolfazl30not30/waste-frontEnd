@@ -10,12 +10,14 @@ import SpecialArea from './SpecialArea';
 import Partner from './Partner';
 import Services from './Services';
 import Footer from './Footer';
+import Navbar from "./Navbar";
 
 function MainPage() {
     return (
         <>
             <div className="space-y-3">
                 <Header/>
+                <Navbar/>
                 <Slider/>
                 <Category/>
                 <BestSellingProducts/>
