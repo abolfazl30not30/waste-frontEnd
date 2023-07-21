@@ -14,17 +14,18 @@ import Footer from './Footer';
 function MainPage() {
     return (
         <>
-            <Header/>
-            <Slider/>
-            <Category/>
-            <BestSellingProducts/>
-            <Off/>
-            <NewProducts/>
-            <SpecialSale/>
-            <SpecialArea/>
-            <Partner/>
-            <Services/>
-            <Footer/>
+            <div className="space-y-3">
+                <Header/>
+                <Slider/>
+                <Category/>
+                <BestSellingProducts/>
+                <Off/>
+                <NewProducts/>
+                <SpecialSale/>
+                <Partner/>
+                <Services/>
+                <Footer/>
+            </div>
         </>
     );
 }

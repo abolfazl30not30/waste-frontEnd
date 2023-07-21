@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Footer() {
   return (
     <div>
-    <div class="footer-area bg-color-e3e8ee pt-54 pb-30">
+    <div className="footer-area bg-color-e3e8ee pt-54 pb-30">
 			<div class="container">
 				<div class="row">
 					<div class="col">

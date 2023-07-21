@@ -1,11 +1,27 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import {useEffect, useState} from "react";
+import axios from "axios";
+import {SeparateNumber} from "../../../Helper/SeparateNumber";
 
 export default function NewProducts() {
+	const [products,setProducts] = useState([]);
+
+	const getProducts = async () =>{
+		await axios.get("http://localhost:8090/api/v1/product/newestProducts").then((res) => {
+			setProducts(res.data)
+		}).catch((err) => {
+			console.log(err)
+		})
+	}
+	useEffect(() => {
+		getProducts()
+	}, [])
+
   return (
-		<section class="arrivals-area">
-			<div class="container">
-				<div class="section-title">
+		<section className="arrivals-area">
+			<div className="container">
+				<div className="section-title">
 					<h2>محصولات جدید</h2>
 
 					<Link to="/" class="read-more">
@@ -13,767 +29,83 @@ export default function NewProducts() {
 					</Link>
 				</div>
 				
-				<div class="row justify-content-center">
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-1.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
+				<div className="row justify-content-center">
+					{
+						products.map((product)=>(
+							<div className="col-xl-3 col-sm-6">
+								<div className="single-products arrivals-border arrivals-box h-[27rem]">
+									<div className="product-img h-[50%]" >
+										<Link to="/">
+											<img src={product.pictureUrl} className="h-full w-full object-cover" alt="Image"/>
 										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/roduct-details.html" class="title">
-									هویج تازه
-								</Link>
 
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
+										<ul className="products-cart-wish-view">
+											<li>
+												<Link to="/" class="wish-btn">
+													<i className="ri-heart-line"></i>
+												</Link>
+											</li>
+											<li>
+												<button className="eye-btn" data-bs-toggle="modal"
+														data-bs-target="#exampleModal">
+													<i className="ri-eye-line"></i>
+												</button>
+											</li>
+											<li>
+												<Link to="/" class="quality-btn">
+													<i className="ri-link"></i>
+												</Link>
+											</li>
+										</ul>
+									</div>
+
+									<div className="product-content">
+										<Link to="/roduct-details.html" class="title">
+											{product.title}
+										</Link>
+
+										<ul className="products-price">
+											<li>
+												{SeparateNumber(product.priceAfterDiscount)}تومان
+												<del> {SeparateNumber(product.price)}تومان </del>
+											</li>
+										</ul>
+
+										<ul className="products-price">
+											<li>
+												<span className="text-neutral-400 font-light"> تاریخ انقضا: </span>
+												<span className="text-neutral-600 font-light">{product.expirationDate}</span>
+											</li>
+										</ul>
+										<ul className="products-price">
+											<li>
+												<span className="text-neutral-400 font-light"> برند: </span>
+												<span className="text-neutral-600 font-light">{product.brand}</span>
+											</li>
+										</ul>
+
+										<ul className="products-rating">
+											<li>
+												<i className="ri-star-fill"></i>
+											</li>
+											<li>
+												<i className="ri-star-fill"></i>
+											</li>
+											<li>
+												<i className="ri-star-fill"></i>
+											</li>
+											<li>
+												<i className="ri-star-fill"></i>
+											</li>
+											<li>
+												<i className="ri-star-fill"></i>
+											</li>
+										</ul>
+									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-2.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									کروسان شکلاتی
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-3.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									فلفل دلمه ای
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<del>2100 تومان</del>
-										<span class="available out"></span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-4.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									ماهی سالمون
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available out">تمام شده</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-								
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-5.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									ماکارونی آشیانه
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-6.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									خرچنگ تازه بوستون
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-7.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									زردآلو تازه
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available out"></span>
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-8.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									لیمو تازه
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-9.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									بسته بادام 
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<del>2100 تومان</del>
-										<span class="available out"></span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-10.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									تمشک تازه
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available out"></span>
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-11.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									بسته پسته
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available out"></span>
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xl-2 col-sm-6">
-						<div class="single-products arrivals-border arrivals-box">
-							<div class="product-img">
-								<Link to="/">
-									<img src="/images/products/product-12.jpg" alt="Image"/>
-								</Link>
-
-								<ul class="products-cart-wish-view">
-									<li>
-										<Link to="/" class="wish-btn">
-											<i class="ri-heart-line"></i>
-										</Link>
-									</li>
-									<li>
-										<button class="eye-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
-											<i class="ri-eye-line"></i>
-										</button>
-									</li>
-									<li>
-										<Link to="/" class="quality-btn">
-											<i class="ri-link"></i>
-										</Link>
-									</li>
-								</ul>
-							</div>
-	
-							<div class="product-content">
-								<Link to="/" class="title">
-									سس خردل
-								</Link>
-
-								<ul class="products-price">
-									<li>
-										1100 تومان
-										<span class="available">در دسترس</span>
-									</li>
-								</ul>
-	
-								<ul class="products-rating">
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-									<li>
-										<i class="ri-star-fill"></i>
-									</li>
-								</ul>
-	
-								<div class="cart-button">
-									
-								</div>
-							</div>
-						</div>
-					</div>
+						))
+					}
 				</div>
 			</div>
 		</section>

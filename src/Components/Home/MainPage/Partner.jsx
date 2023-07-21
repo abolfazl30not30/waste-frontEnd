@@ -41,7 +41,7 @@ export default function Partner() {
 
   return (
     <>
-     <div class="partner-area pb-24">
+     <div className="partner-area pb-24">
 			<div class="container">
 				<div class="partner-wrap style-three">
 					<h3>برند های معتبر موجود در ویست</h3>

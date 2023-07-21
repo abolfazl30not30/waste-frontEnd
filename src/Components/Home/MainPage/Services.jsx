@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Services() {
   return (
-    <section class="services-area pb-54">
+    <section className="services-area pb-54">
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-lg-4 col-sm-6">
