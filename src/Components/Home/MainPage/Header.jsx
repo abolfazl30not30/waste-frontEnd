@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import logo from "../../../assets/images/logo.png"
 function Header() {
 
     return (
@@ -27,10 +27,10 @@ function Header() {
                                 <div className="header-right-content">
                                     <ul>
                                         <li>
-                                            <a href="#">
+                                            <Link to="/dashboard/add-product">
                                                 <i className="ri-account-pin-circle-line"></i>
                                                 حساب کاربری
-                                            </a>
+                                            </Link>
                                         </li>
                                     </ul>
                                 </div>
@@ -45,7 +45,7 @@ function Header() {
                             <div className="col-lg-3">
                                 <div className="logo">
                                     <Link to="/">
-                                        <img src="images/logo.png" alt="Image"/>
+                                        <img src={logo} alt="Image"/>
                                     </Link>
                                 </div>
                             </div>
