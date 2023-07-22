@@ -27,7 +27,7 @@ function Header() {
                                 <div className="header-right-content">
                                     <ul>
                                         <li>
-                                            <Link to="/dashboard/add-product">
+                                            <Link to="/login">
                                                 <i className="ri-account-pin-circle-line"></i>
                                                 حساب کاربری
                                             </Link>
