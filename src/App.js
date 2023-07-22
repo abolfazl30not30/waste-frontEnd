@@ -8,13 +8,16 @@ import MainLogin from "./Components/Home/Login/MainLogin";
 import MainShop from "./Components/Home/Shop/MainShop";
 import ContactUs from "./Components/Home/ContactUs/CountactUs";
 import AboutUs from "./Components/Home/AboutUs/AboutUs";
+import EditProfile from "./Components/User Dashboard/Pages/EditProfile";
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<MainPage />} />
-          <Route exact path="/dashboard" element={<Dashboard />}></Route>
+          <Route exact path="/dashboard" element={<Dashboard />}>
+            <Route path="editprofile" element={<EditProfile />} />
+          </Route>
           <Route path="/login" element={<MainLogin />} />
           <Route path="/shop" element={<MainShop />} />
           <Route path="/contact-us" element={<ContactUs />} />

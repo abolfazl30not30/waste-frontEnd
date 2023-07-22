@@ -13,7 +13,7 @@ function Sidebar() {
                             <Link to="/dashboard/add-product" className="active">افزودن کالا</Link>
                         </li>
                         <li>
-                            <Link to="/dashboard">ویرایش پروفایل</Link>
+                            <Link to="/dashboard/editprofile">ویرایش پروفایل</Link>
                         </li>
                         <li>
                             <Link to="/dashboard">جزئیات سفارش</Link>
