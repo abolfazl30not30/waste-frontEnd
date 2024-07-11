@@ -2,6 +2,7 @@ import { Link } from '@mui/material'
 import React from 'react'
 
 export default function ProductShop() {
+
   return (
     <div className="col-lg-4">
 						<div className="widget-sidebar">

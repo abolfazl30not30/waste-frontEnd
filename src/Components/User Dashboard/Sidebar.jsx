@@ -1,7 +1,12 @@
 import React from 'react';
-import {Link, NavLink} from "react-router-dom";
+import {Link, NavLink, useNavigate} from "react-router-dom";
 
 function Sidebar() {
+    const navigate = useNavigate();
+    const handleExit = () =>{
+        navigate("/")
+        localStorage.clear()
+    }
     return (
         <>
                 <div className="col-lg-3">
@@ -10,22 +15,22 @@ function Sidebar() {
                             <h3>پنل کاربری</h3>
                         </li>
                         <li>
-                            <Link to="/dashboard/add-product" className="active">افزودن کالا</Link>
+                            <NavLink activeClassName={"activeSideBar"} to="/dashboard/add-product">افزودن کالا</NavLink>
                         </li>
                         <li>
-                            <Link to="/dashboard/editprofile">ویرایش پروفایل</Link>
+                            <NavLink activeClassName={"activeSideBar"} to="/dashboard/edit-profile">ویرایش پروفایل</NavLink>
                         </li>
+                        {/*<li>*/}
+                        {/*    <NavLink activeClassName={"activeSideBar"} to="/dashboard">جزئیات سفارش</NavLink>*/}
+                        {/*</li>*/}
+                        {/*<li>*/}
+                        {/*    <NavLink activeClassName={"activeSideBar"} to="/dashboard">افزودن موقعیت</NavLink>*/}
+                        {/*</li>*/}
+                        {/*<li>*/}
+                        {/*    <NavLink activeClassName={"activeSideBar"} to="/dashboard">بازیابی گذرواژه</NavLink>*/}
+                        {/*</li>*/}
                         <li>
-                            <Link to="/dashboard">جزئیات سفارش</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">افزودن موقعیت</Link>
-                        </li>
-                        <li>
-                            <Link to="/dashboard">بازیابی گذرواژه</Link>
-                        </li>
-                        <li>
-                            <Link to="/">خروج</Link>
+                            <button onClick={handleExit}>خروج</button>
                         </li>
                     </ul>
                 </div>

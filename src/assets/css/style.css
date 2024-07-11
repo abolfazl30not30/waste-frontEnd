@@ -5036,7 +5036,29 @@ Dashboard Area CSS
   position: relative;
 }
 
+.dashboard-navigation li button {
+  color: #888888;
+  display: block;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 30px;
+  padding-left: 30px;
+  position: relative;
+}
+
 .dashboard-navigation li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  height: 0;
+  background-color: #83b230;
+  -webkit-transition: all ease 0.5s;
+  transition: all ease 0.5s;
+}
+
+.dashboard-navigation li button::before {
   content: "";
   position: absolute;
   bottom: 0;
@@ -5053,7 +5075,18 @@ Dashboard Area CSS
   background-color: #f3f6fb;
 }
 
+.dashboard-navigation li button:hover {
+  color: #83b230;
+  background-color: #f3f6fb;
+}
+
 .dashboard-navigation li a:hover::before {
+  height: 100%;
+  top: 0;
+  bottom: auto;
+}
+
+.dashboard-navigation li button:hover::before {
   height: 100%;
   top: 0;
   bottom: auto;

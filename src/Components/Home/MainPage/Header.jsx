@@ -27,10 +27,22 @@ function Header() {
                                 <div className="header-right-content">
                                     <ul>
                                         <li>
-                                            <Link to="/login">
-                                                <i className="ri-account-pin-circle-line"></i>
-                                                حساب کاربری
-                                            </Link>
+                                            {
+                                                (localStorage.getItem("Authorization")) ? (
+                                                    <Link to="/dashboard/add-product">
+                                                        {localStorage.getItem("username")}
+                                                        <i className="ri-account-pin-circle-line"></i>
+                                                    </Link>
+                                                ) : (
+                                                    <Link to="/login">
+                                                        <i className="ri-account-pin-circle-line"></i>
+                                                        حساب کاربری
+                                                    </Link>
+                                                )
+
+
+                                            }
+
                                         </li>
                                     </ul>
                                 </div>

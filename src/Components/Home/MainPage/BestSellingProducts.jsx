@@ -35,7 +35,7 @@ export default function BestSellingProducts() {
 							<div className="col-lg-3 col-sm-6">
 								<div className="single-products style-box h-[30rem]">
 									<div className="product-img h-[60%]">
-										<Link to="/">
+										<Link to={`/product-details/${product.id}`}>
 											<img src={product.pictureUrl} className="h-full w-full object-cover" alt="Image"/>
 										</Link>
 										<span className="hot">%{product.discount}</span>
@@ -61,7 +61,7 @@ export default function BestSellingProducts() {
 									</div>
 
 									<div className="product-content">
-										<Link to="/" className="title">
+										<Link to={`/product-details/${product.id}`} className="title">
 											{product.title}
 										</Link>
 

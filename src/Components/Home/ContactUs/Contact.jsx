@@ -5,7 +5,7 @@ export default function Contact() {
   return (
     <div>
       <div className='flex justify-center my-8'>
-        <img classNamemx="  w-3/4" src="/images/map.jpg" alt="map" />
+        <img className="w-3/4" src="/images/map.jpg" alt="map" />
       </div>
       <section className="contact-area ptb-54">
 			<div className="container">
@@ -13,7 +13,6 @@ export default function Contact() {
 					<div className="col-lg-8">
 						<div className="contact-form">
 							<h2>پیام بدهید</h2>
-		
 							<form id="contactForm">
 								<div className="row">
 									<div className="col-lg-6 col-sm-6">
@@ -80,34 +79,22 @@ export default function Contact() {
 					<div className="col-lg-4">
 						<div className="contact-info-europe">
 							<h3>موقعیت ما</h3>
-
 							<ul>
 								<li>
 									<i className="ri-map-pin-line"></i>
-									ایران، استان تهران، میدان آزادی
+									ایران، استان تهران، دانشگاه شهيد بهشتی
 								</li>
 								<li>
 									<i className="ri-phone-line"></i>
-									<Link to="/">973-635-8147</Link>
+									<Link to="/">021-000000</Link>
 								</li>
 								<li>
 									<i className="ri-mail-send-line"></i>
-									<Link to="/"> contact@groe.com</Link>
+									<Link to="/"> contact@waste.com</Link>
 								</li>
 							</ul>
 						</div>
 
-						<div className="contact-info-europe hours">
-							<h3>ساعت کاری:</h3>
-
-							<ul>
-								<li>
-									<i className="ri-time-line"></i>
-									شنبه - دوشنبه 7:00 صبح تا 8:00 شب <br/>
-									شنبه - دوشنبه 7:00 صبح تا 8:00 شب
-								</li>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</div>

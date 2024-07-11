@@ -35,9 +35,10 @@ export default function NewProducts() {
 							<div className="col-xl-3 col-sm-6">
 								<div className="single-products arrivals-border arrivals-box h-[27rem]">
 									<div className="product-img h-[50%]" >
-										<Link to="/">
+										<Link to={`/product-details/${product.id}`}>
 											<img src={product.pictureUrl} className="h-full w-full object-cover" alt="Image"/>
 										</Link>
+										<span className="hot">%{product.discount}</span>
 
 										<ul className="products-cart-wish-view">
 											<li>
@@ -60,7 +61,7 @@ export default function NewProducts() {
 									</div>
 
 									<div className="product-content">
-										<Link to="/roduct-details.html" class="title">
+										<Link to={`/product-details/${product.id}`} class="title">
 											{product.title}
 										</Link>
 
